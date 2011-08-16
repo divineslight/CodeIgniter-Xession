@@ -6,8 +6,8 @@
  * @subpackage    	Libraries
  * @category    		Libraries
  * @author        	Munir Ahmad	
- * @created					04/06/2009
- * @link			http://github.com/philsturgeon/codeigniter-restclient
+ * @created					08/15/2011
+ * @link						http://github.com/munirehmad/Xession/
  */
 
 class Xession
