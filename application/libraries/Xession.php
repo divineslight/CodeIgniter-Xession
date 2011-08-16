@@ -16,7 +16,7 @@ class Xession
 	
 	function __construct( $config = array() )
 	{
-    $this->_CI =& get_instance();
+		$this->_CI =& get_instance();
 
 		session_start();
 
