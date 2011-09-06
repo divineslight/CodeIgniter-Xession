@@ -73,7 +73,7 @@ class Xession
 
 	function get($key)
 	{
-		return isset($_SESSION[$key]) ? $_SESSION[$key][$n] : NULL;
+		return isset($_SESSION[$key]) ? $_SESSION[$key] : NULL;
 	}
 
 }
