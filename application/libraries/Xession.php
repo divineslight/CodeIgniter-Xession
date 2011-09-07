@@ -17,7 +17,7 @@ class Xession
 	
 	function __construct( $config = array() )
 	{
-    $this->_CI =& get_instance();
+		$this->_CI =& get_instance();
 
 		session_start();
 
@@ -39,6 +39,9 @@ class Xession
 	
 	function set( $key, $val = '' )
 	{
+		if ( is_object($key) )
+			$key = (array)$key;
+
 		if ( is_array($key) )
 		{
 			foreach( $key as $k => $val )
@@ -52,6 +55,9 @@ class Xession
 
 	function setflash( $key, $val = '' )
 	{
+		if ( is_object($key) )
+			$key = (array)$key;
+
 		if ( is_array($key) )
 		{
 			foreach( $key as $k => $val )
@@ -74,6 +80,19 @@ class Xession
 	function get($key)
 	{
 		return isset($_SESSION[$key]) ? $_SESSION[$key] : NULL;
+	}
+
+	function destroy()
+	{
+		$_SESSION = array();
+
+		if (ini_get("session.use_cookies"))
+		{
+	    $params = session_get_cookie_params();
+	    setcookie(session_name(), '', time() - 42000, $params["path"], $params["domain"], $params["secure"], $params["httponly"] );
+		}
+
+		session_destroy();
 	}
 
 }
